@@ -2,7 +2,6 @@ package base;
 
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -27,6 +26,7 @@ public class StudentDAL  {
 	public static StudentDomainModel addStudent(StudentDomainModel stu) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
+		@SuppressWarnings("unused")
 		int employeeID = 0;
 		try {
 			tx = session.beginTransaction();
@@ -46,14 +46,15 @@ public class StudentDAL  {
 	public static ArrayList<StudentDomainModel> getStudents() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
+		@SuppressWarnings("unused")
 		StudentDomainModel stuGet = null;		
 		ArrayList<StudentDomainModel> stus = new ArrayList<StudentDomainModel>();
 		
 		try {
 			tx = session.beginTransaction();	
 			
-			List students = session.createQuery("FROM StudentDomainModel").list();
-			for (Iterator iterator = students.iterator(); iterator.hasNext();) {
+			List<?> students = session.createQuery("FROM StudentDomainModel").list();
+			for (Iterator<?> iterator = students.iterator(); iterator.hasNext();) {
 				StudentDomainModel stu = (StudentDomainModel) iterator.next();
 				stus.add(stu);
 
@@ -99,12 +100,13 @@ public class StudentDAL  {
 	public static void deleteStudent(UUID stuID) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
+		@SuppressWarnings("unused")
 		StudentDomainModel stuGet = null;		
 		
 		try {
 			tx = session.beginTransaction();	
 									
-			StudentDomainModel stu = (StudentDomainModel) session.get(StudentDomainModel.class, stuID);
+			StudentDomainModel stu = session.get(StudentDomainModel.class, stuID);
 			session.delete(stu);
 		
 			
@@ -123,6 +125,7 @@ public class StudentDAL  {
 	public static StudentDomainModel updateStudent(StudentDomainModel stu) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
+		@SuppressWarnings("unused")
 		StudentDomainModel stuGet = null;		
 		
 		try {

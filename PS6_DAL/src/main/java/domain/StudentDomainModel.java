@@ -21,7 +21,7 @@ public class StudentDomainModel  {
 	 * @param firstName
 	 * @param middleName
 	 * @param lastName
-	 * @param dOB
+	 * @param DOB
 	 */
 	public StudentDomainModel(String firstName, String middleName, String lastName, Date dOB) {
 		super();

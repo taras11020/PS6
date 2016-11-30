@@ -1,19 +1,7 @@
 package domain;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
-
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import util.LocalDateAdapter;
 
 public class PersonDomainModel {
 
@@ -30,7 +18,9 @@ public class PersonDomainModel {
 		this.PersonID = UUID.randomUUID();
 		this.postalCode = 0;
 	}
-
+	public UUID getPersonID() {
+		return this.PersonID;
+	}
 	public void setPersonID(UUID personID) {
 		PersonID = personID;
 	}
@@ -38,11 +28,13 @@ public class PersonDomainModel {
 	public void setPostalCode(Integer postalCode) {
 		this.postalCode = postalCode;
 	}
-
-	public UUID getPersonID() {
-		return this.PersonID;
+	public String getLastName() {
+		return lastName;
 	}
 
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -50,13 +42,12 @@ public class PersonDomainModel {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
-	public String getLastName() {
-		return lastName;
+	public String getMiddleName() {
+		return middleName;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
 	}
 
 	public String getStreet() {
@@ -91,12 +82,5 @@ public class PersonDomainModel {
 		this.birthday = birthday;
 	}
 
-	public String getMiddleName() {
-		return middleName;
-	}
-
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
 
 }
